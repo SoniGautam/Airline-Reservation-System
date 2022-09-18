@@ -81,10 +81,10 @@ router.post('/resetPassword', async (req, res) => {
     });
 
     let mailOptions = {
-        from: "+<RecipeBook>",
+        from: "+<Airline Reservation System>",
         to: user.email,
         subject: 'Reset your account password',
-        html: '<h2>RecipeBook</h2>' +
+        html: '<h2>Airline Reservation System</h2>' +
         '<h4><b>Reset Password</b></h4>' +
         '<p>Click this link to reset your password:</p>' +
         //'<a href=http://' + config.clientUrl + 'reset/' + user.id + '/' + token + '">' + config.clientUrl + 'reset/' + user.id + '/' + token + '</a>' +
