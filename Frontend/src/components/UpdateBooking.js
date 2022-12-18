@@ -32,7 +32,8 @@ class UpdateBooking extends Component {
 			dest1: oldData.data.dest1.toString(),
 			dest2: oldData.data.dest2.toString(),
 			seats: parseInt(oldData.data.seats),
-			remarks: oldData.data.remarks.toString()
+			remarks: oldData.data.remarks.toString(),
+			username: oldData.data.username.toString()
 		});
 
 		if (oldData.data.remarks === "") {
@@ -53,7 +54,8 @@ class UpdateBooking extends Component {
 	        dest1: Joi.string().min(2).max(255).required(),
 	        dest2: Joi.string().min(2).max(255).required(),
 	        seats: Joi.number().required(),
-	        remarks: Joi.string().max(1024).allow('')        
+	        remarks: Joi.string().max(1024).allow(''),
+	        username: Joi.string().required()        
 	    };
 
 	    return Joi.validate(b, schema);

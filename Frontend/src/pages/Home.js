@@ -45,7 +45,7 @@ class Home extends Component {
 			return <Welcome />
 		}
 		else if (this.state.view==="booking") {
-			return <Booking />
+			return <Booking user={this.props.user}/>
 		}
 		else if (this.state.view==="settings") {
 			return <Settings user={this.props.user} />

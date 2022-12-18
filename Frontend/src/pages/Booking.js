@@ -65,7 +65,7 @@ class Booking extends Component {
 						<Alert.Heading>Show Bookings</Alert.Heading>				
 						</center>
 					</Alert>	
-					<ExploreBooking/>
+					<ExploreBooking user={this.props.user}/>
 				</div>
 			)
 		}
@@ -78,7 +78,7 @@ class Booking extends Component {
 						</center>
 					</Alert>	
 					<br />
-					<CreateBooking />
+					<CreateBooking user={this.props.user}/>
 				</div>
 			)
 		}

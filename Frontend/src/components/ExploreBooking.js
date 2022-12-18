@@ -25,6 +25,7 @@ class ExploreBooking extends Component {
 		bookingId: "",
 		
 		date: "",
+		ticket: "",
 		flightDate: "",
 		dest1: "",
 		dest2: "",
@@ -47,8 +48,16 @@ class ExploreBooking extends Component {
 	}
 
 	populateBookings = async () => {
-		const { data: bookings } = await getBookings();
-		this._isMounted && this.setState({ bookings })
+		const name = String(this.props.user.name)
+		try {
+			const { data: all_bookings } = await getBookings();
+			let bookings = all_bookings.filter(i => i.username === name)
+			this._isMounted && this.setState({ bookings })
+		}
+		catch(error) {
+			console.log(error)
+		}
+		
 	}	
 
 	
@@ -83,6 +92,7 @@ class ExploreBooking extends Component {
 
 		if (m.length !== 0) {
 			this.setState({
+				ticket: m[0]._id,
 				date: m[0].date,
 				flightDate: m[0].flightDate,
 				dest1: m[0].dest1,
@@ -119,6 +129,7 @@ class ExploreBooking extends Component {
 		this.setState({
 			bookingId: "",
 
+			ticket: "",
 			date: "",
 			flightDate: "",
 			dest1: "",
@@ -150,6 +161,7 @@ class ExploreBooking extends Component {
 			this.setState({
 				bookingId: "",
 				date: "",
+				ticket: "",
 				flightDate: "",
 				dest1: "",
 				dest2: "",
@@ -229,6 +241,7 @@ class ExploreBooking extends Component {
 
 		if (c.length !== 0) {
 			this.setState({
+				ticket: c[0]._id,
 				date: c[0].date,
 				flightDate: c[0].flightDate,
 				dest1: c[0].dest1,
@@ -367,7 +380,7 @@ class ExploreBooking extends Component {
 
 						<br/>
 						<h4>
-							Booking Details
+							Booking Details | Ticket No: # {this.state.ticket}
 							<Button 
 								variant="outline-warning" 
 								size="sm" 

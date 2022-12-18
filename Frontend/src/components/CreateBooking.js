@@ -22,9 +22,15 @@ class CreateBooking extends Component {
 			dest2: "",
 			seats: 1,
 			remarks: "",
+			username: "",
 
 			buttonDisabled: false,
 			//loading: true		
+	}
+
+	async componentDidMount(){
+		const user = String(this.props.user.name);
+		this.setState({username: user})
 	}
 
 	getDate = () => {
@@ -51,7 +57,8 @@ class CreateBooking extends Component {
 	        dest1: Joi.string().min(2).max(255).required(),
 	        dest2: Joi.string().min(2).max(255).required(),
 	        seats: Joi.number().required(),
-	        remarks: Joi.string().max(1024).allow('')        
+	        remarks: Joi.string().max(1024).allow(''),
+	        username: Joi.string().required()        
 	    };
 
 	    return Joi.validate(b, schema);

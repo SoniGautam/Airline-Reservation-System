@@ -35,7 +35,8 @@ router.post("/", [auth], async (req, res) => {
         dest1: req.body.dest1,
         dest2: req.body.dest2,
         seats: req.body.seats,
-        remarks: req.body.remarks
+        remarks: req.body.remarks,
+        username: req.body.username
     });
 
     await booking.save();
@@ -56,7 +57,8 @@ router.put("/:id", [auth], async (req, res) => {
             dest1: req.body.dest1,
             dest2: req.body.dest2,
             seats: req.body.seats,
-            remarks: req.body.remarks
+            remarks: req.body.remarks,
+            username: req.body.username
         },
         { new: true }
     );

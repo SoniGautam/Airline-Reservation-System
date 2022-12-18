@@ -29,6 +29,10 @@ const Bookings = mongoose.model('Bookings', new mongoose.Schema({
     remarks: {
         type: String,
         maxlength: 1024
+    },
+    username: {
+        type: String,
+        required: true
     }    
 }));
 
@@ -40,7 +44,8 @@ function validateBookings(booking) {
         dest1: Joi.string().min(2).max(255).required(),
         dest2: Joi.string().min(2).max(255).required(),
         seats: Joi.number().required(),
-        remarks: Joi.string().max(1024).allow('')
+        remarks: Joi.string().max(1024).allow(''),
+        username: Joi.string().required()
     };
 
     return Joi.validate(booking, schema);
